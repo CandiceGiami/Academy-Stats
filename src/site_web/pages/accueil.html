@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/accueil.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Academy Stats - Accueil</title>
+    <link rel="shortcut icon" href="../images/logo_t.png" />
+</head>
+<body>
+
+    <!-- Menu téléphone -->
+    <button id="hamburger-button" class="btn-hamburger">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Bouton pour réduire/agrandir le menu -->
+    <button id="toggle-button" class="btn-toggle">
+        <i class="bi bi-arrow-left-circle"></i>
+    </button>
+
+    <div class="main-container">
+        <!-- Menu -->
+        <nav id="sidebar" class="sidebar">
+            <div class="logo-section">
+                <a href="../index.html">
+                    <img src="../images/logo_t.png" alt="Logo" class="logo">
+                </a>                
+                <h2 class="menu-text">Academy Stats</h2>
+            </div>
+            <ul class="menu-list">
+                <li><a href="../pages/accueil.html"><i class="bi bi-house-door"></i> <span class="menu-text">Accueil</span></a></li>
+                <li><a href="../pages/top.html"><i class="bi bi-bar-chart"></i> <span class="menu-text">Top Rapports</span></a></li>
+                <li class="search-bar">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="search-input" placeholder="Rechercher...">
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-list"></i> <span class="menu-text">Catégories</span></a>
+                    <ul class="submenu">
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Niveau</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=ecole">École</a></li>
+                                <li><a href="../pages/accueil.html?filter=college">Collège</a></li>
+                                <li><a href="../pages/accueil.html?filter=lycee">Lycée</a></li>
+                                <li><a href="../pages/accueil.html?filter=universite">Université</a></li>
+                                <li><a href="../pages/accueil.html?filter=formation">Formations</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Statut</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=etudiant">Etudiant</a></li>
+                                <li><a href="../pages/accueil.html?filter=enseignant">Enseignant</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Autres</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=bac">ParcourSup</a></li>
+                                <li><a href="../pages/accueil.html?filter=crous">CROUS</a></li>
+                                <li><a href="../pages/accueil.html?filter=genre">Genre</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>            
+        </nav>
+
+        <div id="content" class="content">
+        </div>
+
+        <!-- Génération des rapports, filtrage et recherche-->
+        <script>
+            // Base de données locale des rapports
+            const rapports = [
+                {
+                    id: 1,
+                    titre: "Enseignants par Sexe et Lieu",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=5a25c528-afbf-4c30-a543-2cb8b16a74d6&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["genre", "universite", "enseignant"]
+                },
+                {
+                    id: 2,
+                    titre: "Admissions Post-Bac - Écart entre Propositions et Acceptations au Fil des Années",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=20aedcd1-154b-4616-9573-4a39b5bbe901&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["lycee", "etudiant", "bac", "universite"]
+                },
+                
+                {
+                    id: 4,
+                    titre: "Effectifs Étudiants par Formation",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=a02a0829-3934-4a8e-9e87-5d6b6d683c59&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["etudiant", "enseignant", "universite", "formation"]
+                },
+                {
+                    id: 5,
+                    titre: "La Parité Genrée dans les Collèges - Un État des Lieux",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=1b7f50ef-e8d6-4436-9ca1-7b675b405526&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["enseignant", "college", "genre"]
+                },
+                {
+                    id: 6,
+                    titre: "Effectifs Enseignants par Âge et Catégorie",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=149cca4c-d324-4632-9704-ab221f174f36&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["enseignant", "formation", "ecole", "college", "lycee", "universite"]
+                },
+                {
+                    id: 7,
+                    titre: "Projet",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=2708e2a8-596a-477c-a708-78ad27a1aebe&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["etudiant", "enseignant", "ecole"]
+                },
+                {
+                    id: 3,
+                    titre: "Carte des CROUS en France - Répartition Géographique et Zones de Couverture",
+                    url: "https://app.powerbi.com/reportEmbed?reportId=a619eae5-1c20-4de8-89c6-5a173cd96804&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9",
+                    tags: ["crous", "etudiant", "universite"]
+                },
+            ];
+
+
+            const searchInput = document.getElementById('search-input');
+            const contentDiv = document.getElementById('content');
+
+            // Fonction pour récupérer le paramètre de filtre dans l'URL
+            function getFilterFromURL() {
+                try {
+                    const params = new URLSearchParams(window.location.search);
+                    return params.get('filter') || "";
+                } catch (error) {
+                    console.error("Erreur lors de la récupération du filtre dans l'URL :", error);
+                    return ""; 
+                }
+            }
+
+            function afficherRapports(searchTerm = "") {
+                try {
+                    const filter = getFilterFromURL(); 
+                    contentDiv.innerHTML = ""; 
+
+                    // Filtrer les rapports selon le tag et la barre de recherche
+                    const rapportsFiltres = rapports.filter(rapport => {
+                        const correspondAuFiltre = filter ? rapport.tags.includes(filter) : true;
+                        const correspondALaRecherche = rapport.titre.toLowerCase().includes(searchTerm.toLowerCase());
+                        return correspondAuFiltre && correspondALaRecherche;
+                    });
+
+                    // Affichage des rapports filtrés
+                    if (rapportsFiltres.length > 0) {
+                        rapportsFiltres.forEach(rapport => {
+                            const rapportHTML = `
+                                <div>
+                                    <h3>${rapport.titre}</h3></br>
+                                    <div class="powerbi-report-container">
+                                        <iframe title="${rapport.titre}" width="1140" height="541.25" src="${rapport.url}" frameborder="0" allowfullscreen></iframe>
+                                        <button class="download-btn" onclick="telechargerRapport('${rapport.titre}')">Télécharger</button>
+                                    </div>
+                                </div>
+                            `;
+                            contentDiv.innerHTML += rapportHTML;
+                        });
+                    } else {
+                        contentDiv.innerHTML = "<p>Aucun rapport trouvé.</p>";
+                    }
+                } catch (error) {
+                    console.error("Erreur lors de l'affichage des rapports :", error);
+                    contentDiv.innerHTML = "<p>Une erreur s'est produite lors du chargement des rapports. Veuillez réessayer plus tard.</p>";
+                }
+            }
+
+            // Fonction téléchargement
+            function telechargerRapport(titre) {
+                try {
+                    const pdfPath = `../PDF/${titre}.pdf`;
+                    const link = document.createElement('a');
+                    link.href = pdfPath;
+                    link.download = `${titre}.pdf`;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } catch (error) {
+                    console.error("Erreur lors du téléchargement du rapport :", error);
+                    alert("Impossible de télécharger le rapport. Veuillez réessayer plus tard.");
+                }
+            }
+
+            // Mise à jour dynamique lors de la saisie dans la barre de recherche
+            searchInput.addEventListener('input', (e) => {
+                try {
+                    afficherRapports(e.target.value); // Appel de la fonction d'affichage avec le terme recherché
+                } catch (error) {
+                    console.error("Erreur lors de la recherche dynamique :", error);
+                    alert("Une erreur s'est produite lors de la mise à jour des rapports. Veuillez réessayer.");
+                }
+            });
+
+            afficherRapports();
+        </script>
+
+    </div>
+
+    <!-- Menu Dynamique -->
+    <script>
+        
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const toggleButton = document.getElementById('toggle-button');
+        const sidebar = document.getElementById('sidebar');
+        const content = document.getElementById('content');
+
+        if (hamburgerButton && sidebar && toggleButton) {
+            
+            // Fonction pour réduire/agrandir le menu
+            toggleButton.addEventListener('click', () => {
+                try {
+                    if (window.innerWidth > 1024) {
+                        sidebar.classList.toggle('collapsed');
+                        toggleButton.querySelector('i').classList.toggle('bi-arrow-left-circle');
+                        toggleButton.querySelector('i').classList.toggle('bi-arrow-right-circle');
+
+                        if (sidebar.classList.contains('collapsed')) {
+                            toggleButton.style.left = '100px';
+                            content.style.marginLeft = '100px';
+                        } else {
+                            toggleButton.style.left = '260px';
+                            content.style.marginLeft = '260px';
+                        }
+                    }
+                } catch (error) {
+                    console.error("Erreur lors du basculement du menu :", error);
+                    alert("Une erreur s'est produite lors de la gestion du menu. Veuillez réessayer.");
+                }
+            });
+
+            // Fonction bouton Hamburger
+            hamburgerButton.addEventListener('click', () => {
+                try {
+                    sidebar.classList.toggle('open'); 
+                } catch (error) {
+                    console.error("Erreur lors du basculement du menu hamburger :", error);
+                    alert("Une erreur s'est produite lors de l'ouverture du menu. Veuillez réessayer.");
+                }
+            });
+
+            // Fonction Redimensionnement
+            window.addEventListener('resize', () => {
+                try {
+                    if (window.innerWidth > 768) {
+                        sidebar.classList.remove('open');
+                        sidebar.style.left = '0';
+                        content.style.marginLeft = sidebar.classList.contains('collapsed') ? '90px' : '250px';
+                    } else {
+                        sidebar.style.left = '-250px';
+                        content.style.marginLeft = '0';
+                    }
+                } catch (error) {
+                    console.error("Erreur lors du redimensionnement de la fenêtre :", error);
+                    alert("Une erreur s'est produite lors de l'ajustement de la disposition. Veuillez actualiser la page.");
+                }
+            });
+
+        }
+
+        // Gestion des sous-menus déroulants
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', (e) => {
+                try {
+                    e.preventDefault(); 
+                    const submenu = menu.nextElementSibling;
+                    submenu.classList.toggle('hidden');
+                    submenu.classList.toggle('open'); 
+                } catch (error) {
+                    console.error("Erreur lors de la gestion des sous-menus :", error);
+                    alert("Une erreur s'est produite lors de l'ouverture du sous-menu. Veuillez réessayer.");
+                }
+            });
+        });
+
+        // Gestionnaire global des erreurs
+        window.onerror = function (message, source, lineno, colno, error) {
+            console.error(`Erreur capturée : ${message} à ${source}:${lineno}:${colno}`, error);
+            alert("Une erreur imprévue s'est produite. Veuillez vérifier la console pour plus de détails.");
+        };
+
+    </script>
+    
+</body>
+</html>

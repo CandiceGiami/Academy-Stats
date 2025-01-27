@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/accueil.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <title>Academy Stats - Top</title>
+    <link rel="shortcut icon" href="../images/logo_t.png" />
+</head>
+<body>
+
+    <!-- Menu téléphone -->
+    <button id="bouton_hamburger" class="btn-hamburger">
+        <i class="bi bi-list"></i>
+    </button>
+
+    <!-- Bouton pour réduire/agrandir le menu -->
+    <button id="bouton_basculer" class="btn-toggle">
+        <i class="bi bi-arrow-left-circle"></i>
+    </button>
+
+   
+    <div class="main-container">
+         <!-- Menu -->
+        <nav id="barre_laterale" class="sidebar">
+            <div class="logo-section">
+                <a href="../index.html">
+                    <img src="../images/logo_t.png" alt="Logo" class="logo">
+                </a>                
+                <h2 class="menu-text">Academy Stats</h2>
+            </div>
+            <ul class="menu-list">
+                <li><a href="../pages/accueil.html"><i class="bi bi-house-door"></i> <span class="menu-text">Accueil</span></a></li>
+                <li><a href="../pages/top.html"><i class="bi bi-bar-chart"></i> <span class="menu-text">Top Rapports</span></a></li>
+                <li class="search-bar">
+                    <i class="bi bi-search"></i>
+                    <input type="text" id="champ_recherche" placeholder="Rechercher...">
+                </li>
+                <li>
+                    <a href="#"><i class="bi bi-list"></i> <span class="menu-text">Catégories</span></a>
+                    <ul class="submenu">
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Niveau</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=ecole">École</a></li>
+                                <li><a href="../pages/accueil.html?filter=college">Collège</a></li>
+                                <li><a href="../pages/accueil.html?filter=lycee">Lycée</a></li>
+                                <li><a href="../pages/accueil.html?filter=universite">Université</a></li>
+                                <li><a href="../pages/accueil.html?filter=formation">Formations</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Statut</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=etudiant">Etudiant</a></li>
+                                <li><a href="../pages/accueil.html?filter=enseignant">Enseignant</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><span class="menu-text">Autres</span></a>
+                            <ul class="submenu hidden">
+                                <li><a href="../pages/accueil.html?filter=bac">ParcourSup</a></li>
+                                <li><a href="../pages/accueil.html?filter=crous">CROUS</a></li>
+                                <li><a href="../pages/accueil.html?filter=genre">Genre</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>            
+        </nav>
+
+        <!-- Contenu principal -->
+        <div id="contenu" class="content">
+            </br><h1 class="page-title">TOP 5 des meilleurs rapports 2024</h1>
+
+            <!-- Section des rapports -->
+            <div id="top_rapports">
+
+                <div class="powerbi-report-container">
+                    <div class="ranking">
+                        <span class="ranking-number">1.</span>
+                        <i class="bi bi-trophy ranking-icon"></i>
+                    </div>
+                    <h3 style="margin-top : 10px;">Effectifs Étudiants par Formation</h3></br>
+                    <iframe src="https://app.powerbi.com/reportEmbed?reportId=a02a0829-3934-4a8e-9e87-5d6b6d683c59&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+                    <button class="download-btn" onclick="telecharger_rapport('Effectifs Étudiants par Formation')">Télécharger</button>
+                    </br></br><div class="data-analysis">
+                        <h4>Analyse des données</h4>
+                        <p style="text-align : justify;">Ce rapport met en évidence la répartition des étudiants par type de formation. Les universités représentent la majorité des inscriptions, suivies des sections de techniciens supérieurs (STS). Les écoles spécialisées telles que les écoles de commerce et d'ingénierie montrent une part significative mais moindre. Cela reflète une concentration des étudiants dans des formations généralistes, avec une moindre orientation vers des filières spécialisées dès le départ.</p>
+                    </div>
+                </div>
+
+                <div class="powerbi-report-container">
+                    <div class="ranking">
+                        <span class="ranking-number">2.</span>
+                        <i class="bi bi-trophy ranking-icon"></i>
+                    </div>
+                    <h3 style="margin-top : 10px;">Admissions Post-Bac - Écart entre Propositions et Acceptations au Fil des Années</h3></br>
+                    <iframe src="https://app.powerbi.com/reportEmbed?reportId=20aedcd1-154b-4616-9573-4a39b5bbe901&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+                    <button class="download-btn" onclick="telecharger_rapport('Admissions Post-Bac - Écart entre Propositions et Acceptations au Fil des Années')">Télécharger</button>
+                    </br></br><div class="data-analysis">
+                        <h4>Analyse des données</h4>
+                        <p style="text-align : justify;">Le rapport montre une évolution intéressante entre les propositions d’admissions et les acceptations. Les écarts observés peuvent être dus à des choix multiples offerts aux candidats ou à des refus intentionnels. Cette tendance pourrait indiquer un besoin d’optimisation dans le processus d’admission ou une amélioration de la transparence des offres éducatives.</p>
+                    </div>
+                </div>
+
+                <div class="powerbi-report-container">
+                    <div class="ranking">
+                        <span class="ranking-number">3.</span>
+                        <i class="bi bi-trophy ranking-icon"></i>
+                    </div>
+                    <h3 style="margin-top : 10px;">La Parité Genrée dans les Collèges - Un État des Lieux</h3></br>
+                    <iframe src="https://app.powerbi.com/reportEmbed?reportId=1b7f50ef-e8d6-4436-9ca1-7b675b405526&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+                    <button class="download-btn" onclick="telecharger_rapport('La Parité Genrée dans les Collèges - Un État des Lieux')">Télécharger</button>
+                    </br></br><div class="data-analysis">
+                        <h4>Analyse des données</h4>
+                        <p style="text-align : justify;">Ce rapport examine la répartition des genres dans les collèges par académie. Bien qu'une parité globale soit observée à l'échelle nationale, certaines disparités apparaissent au niveau régional. Ces différences peuvent être attribuées à des facteurs culturels ou socio-économiques influençant l'accès à l'éducation.</p>
+                    </div>
+                </div>
+
+                <div class="powerbi-report-container">
+                    <div class="ranking">
+                        <span class="ranking-number">4.</span>
+                        <i class="bi bi-trophy ranking-icon"></i>
+                    </div>
+                    <h3 style="margin-top : 10px;">Effectifs Enseignants par Âge et Catégorie</h3></br>
+                    <iframe src="https://app.powerbi.com/reportEmbed?reportId=149cca4c-d324-4632-9704-ab221f174f36&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+                    <button class="download-btn" onclick="telecharger_rapport('Effectifs Enseignants par Âge et Catégorie')">Télécharger</button>
+                    </br></br><div class="data-analysis">
+                        <h4>Analyse des données</h4>
+                        <p style="text-align : justify;">Ce rapport détaille la répartition des enseignants par tranche d’âge et catégorie professionnelle. Une concentration notable d’enseignants dans les tranches d’âge avancées souligne un défi potentiel lié au renouvellement du personnel enseignant. Les maîtres de conférences et assimilés représentent une catégorie stable, tandis que d’autres segments nécessitent un examen plus approfondi.</p>
+                    </div>
+                </div>
+
+                <div class="powerbi-report-container">
+                    <div class="ranking">
+                        <span class="ranking-number">5.</span>
+                        <i class="bi bi-trophy ranking-icon"></i>
+                    </div>
+                    <h3 style="margin-top : 10px;">Enseignants par Sexe et Lieu</h3></br>
+                    <iframe src="https://app.powerbi.com/reportEmbed?reportId=5a25c528-afbf-4c30-a543-2cb8b16a74d6&autoAuth=true&ctid=054ac6ef-3ff9-4003-8495-fcffd3e9cbc9" frameborder="0" width="100%" height="400" allowfullscreen></iframe>
+                    <button class="download-btn" onclick="telecharger_rapport('Enseignants par Sexe et Lieu')">Télécharger</button>
+                    </br></br><div class="data-analysis">
+                        <h4>Analyse des données</h4>
+                        <p style="text-align : justify;">Ce rapport explore la répartition des enseignants selon leur sexe et leur lieu d’affectation. Il met en lumière un équilibre relatif dans certains lieux d’enseignement, tandis que d’autres montrent une sur-représentation d’un sexe, reflétant des disparités structurelles qui méritent d’être étudiées pour encourager une égalité des chances.</p>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+
+    <!-- Téléchargement des rapports -->
+    <script>
+        // Télécharger un rapport en PDF avec gestion des erreurs
+        function telecharger_rapport(titre) {
+            try {
+                const chemin_pdf = `../PDF/${titre}.pdf`; 
+                const lien = document.createElement('a');
+                lien.href = chemin_pdf;
+                lien.download = `${titre}.pdf`;
+                document.body.appendChild(lien);
+                lien.click();
+                document.body.removeChild(lien);
+            } catch (error) {
+                console.error("Erreur lors du téléchargement du rapport :", error);
+                alert("Impossible de télécharger le rapport. Veuillez réessayer plus tard.");
+            }
+        }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const menu_est_reduit = barre_laterale.classList.contains('collapsed');
+                if (window.innerWidth <= 768) {
+                    // Mode responsive
+                    contenu.style.marginLeft = '0';
+                    barre_laterale.style.left = '-250px';
+                } else {
+                    // Mode normal
+                    contenu.style.marginLeft = menu_est_reduit ? '90px' : '250px';
+                    barre_laterale.style.left = '0';
+                }
+            } catch (error) {
+                console.error("Erreur lors de l'initialisation de la disposition :", error);
+            }
+        });
+
+    </script> 
+
+    <!-- Menu dynamique -->
+    <script>
+        const bouton_hamburger = document.getElementById('bouton_hamburger');
+        const bouton_basculer = document.getElementById('bouton_basculer');
+        const barre_laterale = document.getElementById('barre_laterale');
+        const contenu = document.getElementById('contenu');
+
+        if (bouton_hamburger && barre_laterale && bouton_basculer) {
+            // Réduire ou agrandir le menu
+            bouton_basculer.addEventListener('click', () => {
+                try {
+                    if (window.innerWidth > 1024) {
+                        barre_laterale.classList.toggle('collapsed');
+                        bouton_basculer.querySelector('i').classList.toggle('bi-arrow-left-circle');
+                        bouton_basculer.querySelector('i').classList.toggle('bi-arrow-right-circle');
+
+                        if (barre_laterale.classList.contains('collapsed')) {
+                            bouton_basculer.style.left = '100px';
+                            contenu.style.marginLeft = '100px';
+                        } else {
+                            bouton_basculer.style.left = '260px';
+                            contenu.style.marginLeft = '260px';
+                        }
+                    }
+                } catch (error) {
+                    console.error("Erreur lors du basculement du menu :", error);
+                }
+            });
+
+            // Bouton hamburger en mode responsive
+            bouton_hamburger.addEventListener('click', () => {
+                try {
+                    if (window.innerWidth <= 768) {
+                        const menu_est_ouvert = barre_laterale.style.left === '0px';
+                        barre_laterale.style.left = menu_est_ouvert ? '-250px' : '0';
+                    }
+                } catch (error) {
+                    console.error("Erreur lors de l'ouverture du menu hamburger :", error);
+                }
+            });
+
+            // Redimensionnement de la fenêtre
+            window.addEventListener('resize', () => {
+                try {
+                    if (window.innerWidth > 768) {
+                        barre_laterale.classList.remove('open');
+                        barre_laterale.style.left = '0';
+                        contenu.style.marginLeft = barre_laterale.classList.contains('collapsed') ? '90px' : '250px';
+                    } else {
+                        barre_laterale.style.left = '-250px';
+                        contenu.style.marginLeft = '0';
+                    }
+                } catch (error) {
+                    console.error("Erreur lors du redimensionnement de la fenêtre :", error);
+                }
+            });
+        }
+
+
+        // Gérer les sous-menus avec gestion des erreurs
+        document.querySelectorAll('.has-submenu > a').forEach(menu => {
+            menu.addEventListener('click', (e) => {
+                try {
+                    e.preventDefault();
+                    const sous_menu = menu.nextElementSibling;
+                    sous_menu.classList.toggle('hidden');
+                    sous_menu.classList.toggle('open');
+                } catch (error) {
+                    console.error("Erreur lors de la gestion des sous-menus :", error);
+                }
+            });
+        });
+
+        // Gestionnaire global des erreurs
+        window.onerror = function(message, source, lineno, colno, error) {
+            console.error(`Erreur capturée : ${message} à ${source}:${lineno}:${colno}`, error);
+            alert("Une erreur s'est produite, veuillez vérifier la console pour plus d'informations.");
+        };
+
+    </script>
+    <!-- Barre de recherches -->
+    <script>
+        const rapportsTop = [
+            { id: 1, titre: "Effectifs Étudiants par Formation" },
+            { id: 2, titre: "Admissions Post-Bac - Écart entre Propositions et Acceptations au Fil des Années" },
+            { id: 3, titre: "La Parité Genrée dans les Collèges - Un État des Lieux" },
+            { id: 4, titre: "Effectifs Enseignants par Âge et Catégorie" },
+            { id: 5, titre: "Enseignants par Sexe et Lieu" }
+        ];
+
+        const searchInput = document.getElementById('champ_recherche');
+        const rapportsContainer = document.getElementById('top_rapports');
+
+        // Fonction pour afficher les rapports filtrés
+        function afficherRapportsTop(searchTerm = "") {
+            try {
+                // Filtrer les rapports en fonction du terme recherché
+                const rapportsFiltres = rapportsTop.filter(rapport =>
+                    rapport.titre.toLowerCase().includes(searchTerm.toLowerCase())
+                );
+
+                // Masquer ou afficher les rapports en fonction du filtre
+                Array.from(rapportsContainer.children).forEach(container => {
+                    const titre = container.querySelector('h3').textContent;
+                    const correspond = rapportsFiltres.some(rapport => rapport.titre === titre);
+                    container.style.display = correspond ? "block" : "none";
+                });
+
+            } catch (error) {
+                console.error("Erreur lors de la recherche dans les rapports :", error);
+                alert("Une erreur s'est produite lors de la recherche. Veuillez réessayer.");
+            }
+        }
+
+        // Ajout d'un écouteur pour la recherche dynamique
+        searchInput.addEventListener('input', (e) => {
+            afficherRapportsTop(e.target.value);
+        });
+    </script>
+
+</body>
+</html>
